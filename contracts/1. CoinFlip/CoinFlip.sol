@@ -1,5 +1,6 @@
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.9;
+import "hardhat/console.sol";
 
 contract CoinFlip {
     uint256 public consecutiveWins;
@@ -21,12 +22,14 @@ contract CoinFlip {
         lastHash = blockValue;
         uint256 coinFlip = blockValue / FACTOR;
         bool side = coinFlip == 1 ? true : false;
-
+        console.log("Coinflip value victim: %s", coinFlip); 
         if (side == _guess) {
             consecutiveWins++;
+            console.log("Consecutive wins: %s", consecutiveWins);
             return true;
         } else {
             consecutiveWins = 0;
+            console.log("Bad guess; reset to 0");
             return false;
         }
     }
